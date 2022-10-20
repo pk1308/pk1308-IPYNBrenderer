@@ -26,9 +26,8 @@ def is_valid_id(GOOGLE_DOC_ID: str) -> bool:
 
 
 @ensure_annotations
-def render_google_doc(
-    GOOGLE_DOC_ID: str, width: str = "640", height: str = "600"
-) -> str:
+def render_google_doc(GOOGLE_DOC_URL: str, width: str = "640", height: str = "600") -> str:
+    GOOGLE_DOC_ID = GOOGLE_DOC_URL.split("/")[-2]
     try:
         if is_valid_id(GOOGLE_DOC_ID):
             iframe = f"""<iframe 
